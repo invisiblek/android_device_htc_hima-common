@@ -65,6 +65,12 @@ done
 
 # Pick up overlay for features that depend on non-open-source files
 PRODUCT_PACKAGES += \\
+    com.verizon.ims \\
+    ims \\
+    imssettings \\
+    imscmlibrary
+
+PRODUCT_PACKAGES += \\
     TimeService \\
     libril \\
     libtime_genoff \\
@@ -111,6 +117,46 @@ EOF
 LOCAL_PATH := \$(call my-dir)
 
 ifneq (\$(filter hima himaul himawl himawhl,\$(TARGET_DEVICE)),)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := ims
+LOCAL_SRC_FILES := proprietary/app/ims/ims.apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_DEX_PREOPT := false
+LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := platform
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := imssettings
+LOCAL_SRC_FILES := proprietary/app/imssettings/imssettings.apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_DEX_PREOPT := false
+LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := platform
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := com.verizon.ims
+LOCAL_MODULE_OWNER := \$VENDOR
+LOCAL_SRC_FILES := proprietary/framework/com.verizon.ims.jar
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := imscmlibrary
+LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_SRC_FILES := proprietary/framework/imscmlibrary.jar
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
+include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := TimeService

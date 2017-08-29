@@ -19,9 +19,6 @@ COMMON_PATH := device/htc/hima-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
-# Assertions
-TARGET_BOARD_INFO_FILE ?= $(COMMON_PATH)/board-info.txt
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -47,7 +44,7 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_DTBTOOL_ARGS := -2
 BOARD_KERNEL_BASE := 0x00078000
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidusb.pid=0x065d androidkey.dummy=1 androidtouch.htc_event=1 disk_mode_enable=1
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidusb.pid=0x065d androidkey.dummy=1 androidtouch.htc_event=1 disk_mode_enable=1 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 --tags_offset 0x01d88000
@@ -136,7 +133,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_hima
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
@@ -148,8 +144,8 @@ TARGET_RIL_VARIANT := caf
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
+#include device/qcom/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true

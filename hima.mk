@@ -119,8 +119,8 @@ PRODUCT_PACKAGES += \
     Dotcase
 
 # Gesture Handler
-PRODUCT_PACKAGES += \
-    GestureHandler
+#PRODUCT_PACKAGES += \
+#    GestureHandler
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -151,9 +151,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
 
 # IPACM
-PRODUCT_PACKAGES += \
-    IPACM_cfg.xml \
-    ipacm
+#PRODUCT_PACKAGES += \
+#    IPACM_cfg.xml \
+#    ipacm
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -231,10 +231,6 @@ PRODUCT_PACKAGES += \
     dsi_config.xml \
     netmgr_config.xml \
     qmi_config.xml
-
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_hima
 
 # RIL
 PRODUCT_PACKAGES += \
